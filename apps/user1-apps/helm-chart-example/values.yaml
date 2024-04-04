@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/pnminh232/todo-frontend
+  repository: quay.io/pnminh232/hello-java-do288
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "review1"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
