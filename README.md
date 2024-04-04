@@ -8,7 +8,7 @@
 - Pipelines using ArgoCD and Tekton
 ## GitOps
 ### FLows
-- Red Hat OpenShift GitOps -> ArgoCD CR created in `example` ns -> ArgoCD server created -> Argo's Application CR created in `example` ns(has to be the same with ArgoCD CR) -> open ArgoCD UI route -> sync(or use autosync)
+- Red Hat OpenShift GitOps -> ArgoCD CR created in `example` ns ->  ArgoCD server created -> `AppProject` CR created -> target namespace labeled with `argocd.argoproj.io/managed-by: [ArgoCD namespace]` -> Argo's Application CR created in `example` ns(has to be the same with ArgoCD CR) -> open ArgoCD UI route -> sync(or use autosync)
 ```
 apiVersion: argoproj.io/v1alpha1
 kind: Application

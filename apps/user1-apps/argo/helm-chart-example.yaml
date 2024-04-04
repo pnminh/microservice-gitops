@@ -6,7 +6,7 @@ metadata:
   namespace: user1-gitops
 spec:
   destination:
-    namespace: user1-apps
+    namespace: user1-apps2
     server: https://kubernetes.default.svc
   source:
     path: apps/user1-apps/helm-chart-example
