@@ -1,0 +1,18 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-chart-example
+  namespace: user1-gitops
+spec:
+  destination:
+    namespace: user1-apps
+    server: https://kubernetes.default.svc
+  source:
+    path: apps/user1-apps/helm-chart-example
+    repoURL: https://github.com/pnminh/microservice-gitops.git
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated: {} #enable auto sync
+      

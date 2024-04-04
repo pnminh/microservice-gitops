@@ -7,4 +7,20 @@
 - GitOps
 - Pipelines using ArgoCD and Tekton
 ## FLows
-- Red Hat OpenShift GitOps -> ArgoCD CR created in `example` ns -> ArgoCD server created -> Argo's Application CR created in `example` ns(has to be the same with ArgoCD CR) -> open ArgoCD UI route -> sync
+- Red Hat OpenShift GitOps -> ArgoCD CR created in `example` ns -> ArgoCD server created -> Argo's Application CR created in `example` ns(has to be the same with ArgoCD CR) -> open ArgoCD UI route -> sync(or use autosync)
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+  namespace: user1-gitops
+spec:
+  ...
+  syncPolicy:
+    automated: {} #enable auto sync
+```
+## Run examples
+1. Create `Application` resource
+```
+$ oc apply -f helm-chart-example.yaml
+```
