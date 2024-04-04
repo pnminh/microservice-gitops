@@ -1,0 +1,27 @@
+apiVersion: "security.istio.io/v1beta1"
+kind: "RequestAuthentication"
+metadata:
+  name: app-a-requestauthentication
+spec:
+  selector:
+    matchLabels:
+      app: app-a
+  jwtRules:
+  - issuer: "https://keycloak-user1-keycloak.apps.cluster-qblmq.qblmq.sandbox2917.opentlc.com/realms/myrealm"
+    jwksUri: "http://keycloak.user1-keycloak.svc.cluster.local:8080/realms/myrealm/protocol/openid-connect/certs"
+    forwardOriginalToken: true
+
+---
+apiVersion: "security.istio.io/v1beta1"
+kind: "AuthorizationPolicy"
+metadata:
+  name: app-a-authorizationpolicy
+spec:
+  selector:
+    matchLabels:
+      app: app-a
+  action: DENY
+  rules:
+  - from:
+    - source:
+        notRequestPrincipals: ["*"]
