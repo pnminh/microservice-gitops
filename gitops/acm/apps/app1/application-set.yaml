@@ -17,9 +17,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/piomin/openshift-cluster-config.git
+        repoURL: https://github.com/pnminh/microservice-gitops.git
         targetRevision: master
-        path: apps/simple
+        path: apps/user1-apps/helm-chart-example
       destination:
         namespace: demo
         server: "{{server}}" # target cluster
