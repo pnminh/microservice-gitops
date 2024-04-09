@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sample-spring-boot
+  namespace: openshift-gitops
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement # extract the list of clusters from the key decisions
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: demo-gitops-placement
+        requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: sample-spring-boot-{{name}} #set the name of Argo CD Application
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/piomin/openshift-cluster-config.git
+        targetRevision: master
+        path: apps/simple
+      destination:
+        namespace: demo
+        server: "{{server}}" # target cluster
+      syncPolicy:
+        automated:
+          selfHeal: false
+        syncOptions:
+          - CreateNamespace=true #  create ns on all clusters automatically with Argo CD
