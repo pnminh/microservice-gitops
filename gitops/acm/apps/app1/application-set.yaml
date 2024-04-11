@@ -25,6 +25,7 @@ spec:
         server: "{{server}}" # target cluster
       syncPolicy:
         automated:
+          prune: true
           selfHeal: false
         syncOptions:
           - CreateNamespace=true #  create ns on all clusters automatically with Argo CD

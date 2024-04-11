@@ -3,6 +3,7 @@
 ### Links
 - https://piotrminkowski.com/2022/10/24/gitops-with-advanced-cluster-management-for-kubernetes/
 - https://github.com/albertofilice/rhacm-gitops/tree/main
+- https://www.redhat.com/architect/multi-cluster-deployment-kubernetes-gitops
 ### Placement policy
 Here is how the placement policy combines with other selection methods to determine a matching list of ManagedClusters: 
 1. Kubernetes clusters are registered with hub as cluster-scoped ManagedClusters; 
